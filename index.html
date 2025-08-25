@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attention international - the day:n</title>
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        /* CSS Variables for easy color management */
+        :root {
+            --primary-color: #3a3a3a;
+            --secondary-color: #f4f1ea;
+            --text-color: #333;
+            --light-gray: #888;
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: var(--text-color);
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--light-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap-reverse; /* On smaller screens, text appears below image */
+        }
+
+        .hero-text {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .hero img {
+            max-width: 100%;
+            width: 350px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #555;
+        }
+
+        /* Product Information Section */
+        .product-info {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .product-details div {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-details h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 1.5em;
+        }
+        
+        .product-details p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        footer p {
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .hero-text {
+                text-align: center;
+            }
+            .hero-content {
+                flex-direction: column-reverse;
+                gap: 30px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            nav ul {
+                display: none; /* Simple hide for mobile, can be replaced with a hamburger menu */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">the day:n</div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>A New Start for Your Skin</h1>
+                        <p>매일 아침, 자연의 힘으로 부드럽고 깨끗하게. 더 데이엔 파우더 워시로 당신의 하루를 시작하세요.</p>
+                        <a href="#" class="cta-button">자세히 보기</a>
+                    </div>
+                    <img src="product.jpg" alt="the day:n Powder Wash product image">
+                </div>
+            </div>
+        </section>
+
+        <section class="product-info">
+            <div class="container">
+                <h2 class="section-title">The day:n Powder Wash</h2>
+                <div class="product-details">
+                    <div>
+                        <h3>🌿 자연 유래 효소</h3>
+                        <p>파파인 효소가 함유되어 자극 없이 부드럽게 각질을 제거하고 피부 결을 정돈해줍니다. 매일 사용해도 부담 없는 순한 클렌징을 경험하세요.</p>
+                    </div>
+                    <div>
+                        <h3>💧 촉촉한 마무리감</h3>
+                        <p>세안 후에도 당김 없이 촉촉함을 유지해주는 보습 성분이 함유되어 있습니다. 피부 본연의 유수분 밸런스를 지켜줍니다.</p>
+                    </div>
+                    <div>
+                        <h3>✨ 맑고 깨끗한 피부</h3>
+                        <p>미세한 파우더 입자가 물에 닿아 풍성한 거품으로 변하며, 모공 속 노폐물까지 깨끗하게 씻어내 맑고 투명한 피부로 가꾸어 줍니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">attention international</div>
+            <p>&copy; 2025 attention international. All Rights Reserved.</p>
+            <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
+        </div>
+    </footer>
+
+</body>
+</html>
