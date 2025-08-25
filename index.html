@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>the day:n - The Ritual of Purity</title>
     <style>
-        /* Google Fonts Import: IBM Plex Sans KR 추가 */
+        /* Google Fonts Import */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap');
 
         :root {
             --font-serif: 'Playfair Display', serif;
-            --font-sans: 'IBM Plex Sans KR', sans-serif; /* 기본 글꼴 변경 */
-            --color-text: #2c2c2c; /* 텍스트를 약간 더 진하게 */
+            --font-sans: 'IBM Plex Sans KR', sans-serif;
+            --color-text: #2c2c2c;
             --color-background: #fdfdfc;
             --color-accent: #f4f1ea; 
         }
@@ -44,12 +44,12 @@
         }
 
         .content-wrapper {
-            max-width: 1100px; /* 전체적인 콘텐츠 폭을 약간 넓힘 */
+            max-width: 1100px;
             width: 100%;
             z-index: 2;
         }
         
-        .video-background {
+        .video-background, .image-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -77,17 +77,17 @@
             font-weight: 500;
             line-height: 1.4;
             margin: 0;
+            margin-bottom: 30px;
         }
         #hero p {
             font-size: 1.2rem;
-            margin-top: 10px;
             letter-spacing: 1px;
         }
 
         /* Section 2: Philosophy */
         #philosophy { background-color: var(--color-accent); }
         #philosophy p {
-            font-size: 1.8rem; /* 데스크탑 글자 크기 증가 */
+            font-size: 1.8rem;
             line-height: 2.2;
             max-width: 750px;
             margin: 15px auto;
@@ -98,7 +98,7 @@
             font-size: 2.1rem;
         }
         
-        /* Section 3: Essence (구조 변경) */
+        /* Section 3: Essence (좌우 분할 레이아웃) */
         #essence { background-color: var(--color-background); }
         .two-column-layout {
             display: flex;
@@ -134,12 +134,12 @@
             display: block;
         }
 
-        /* Section 4: Origin */
+        /* Section 4: Origin (전체 화면 영상 배경) */
         #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
         #origin p {
-            font-size: 1.8rem; /* 데스크탑 글자 크기 증가 */
+            font-size: 1.8rem;
             line-height: 2.2;
-            font-weight: 400; /* 약간 더 두껍게 */
+            font-weight: 400;
         }
 
         /* Section 5: Promise */
@@ -185,19 +185,19 @@
                 padding: 100px 25px;
                 min-height: 80vh;
             }
-            #hero h1 { font-size: 2.8rem; }
+            #hero h1 { font-size: 2.6rem; }
             #hero p { font-size: 1rem; }
 
             #philosophy p { font-size: 1.2rem; line-height: 1.8; }
             #philosophy strong { font-size: 1.5rem; }
 
-            /* Section 3: 모바일에서는 세로로 쌓이도록 변경 */
             .two-column-layout {
                 flex-direction: column;
                 text-align: center;
             }
             .text-column { margin-bottom: 40px; }
             .text-column h2, #promise h2 { font-size: 2.2rem; }
+            #promise h2 { font-size: 2.1rem; }
 
             #origin p { font-size: 1.2rem; line-height: 1.8; }
         }
@@ -223,7 +223,15 @@
                 <p><br><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
             </div>
         </section>
-
+        
+        <section id="origin" class="section">
+            <video id="originVideo" class="video-background" muted playsinline src="section3.mp4"></video>
+            <div class="overlay"></div>
+            <div class="content-wrapper">
+                <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+            </div>
+        </section>
+        
         <section id="essence" class="section">
             <div class="content-wrapper">
                 <div class="two-column-layout">
@@ -233,18 +241,10 @@
                     </div>
                     <div class="image-column">
                         <div class="image-container">
-                            <img src="section3.jpg" alt="The Essence of the day:n">
+                            <img src="section4.jpg" alt="The Essence of the day:n">
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="origin" class="section">
-            <video id="originVideo" class="video-background" muted playsinline src="section4.mp4"></video>
-            <div class="overlay"></div>
-            <div class="content-wrapper">
-                <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
             </div>
         </section>
 
@@ -271,7 +271,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        if (entry.target.id === 'origin' && originVideo.paused) {
+                        if (entry.target.id === 'origin' && originVideo && originVideo.paused) {
                             originVideo.play().catch(error => {
                                 console.log("Video autoplay prevented by browser.");
                             });
