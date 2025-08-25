@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>the day:n - The Ritual of Purity</title>
     <style>
-        /* Google Fonts Import: Serif for Headers, Sans-serif for Body */
+        /* Google Fonts Import */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Noto+Sans+KR:wght@300;400&display=swap');
 
         :root {
@@ -13,7 +13,6 @@
             --font-sans: 'Noto Sans KR', sans-serif;
             --color-text: #333333;
             --color-background: #fdfdfc;
-            --color-accent: #e9e7e1; /* A subtle, warm off-white for contrast */
         }
 
         /* Basic Reset and Smooth Scrolling */
@@ -28,10 +27,10 @@
             font-family: var(--font-sans);
             font-weight: 300;
             line-height: 1.8;
-            text-align: center; /* All text is centered by default */
+            text-align: center;
         }
 
-        /* All sections will have a consistent vertical rhythm */
+        /* Section Base Style */
         section {
             padding: 120px 40px;
             max-width: 800px;
@@ -39,7 +38,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 60vh;
+            min-height: 80vh;
         }
 
         /* Section 1: The First Moment (Full Screen Hero) */
@@ -60,9 +59,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures video covers the full screen */
+            object-fit: cover;
             z-index: -2;
-            background-color: #555; /* Fallback color */
+            background-color: #555;
         }
 
         #hero::after {
@@ -72,7 +71,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.25); /* Dark overlay for text readability */
+            background: rgba(0, 0, 0, 0.25);
             z-index: -1;
         }
 
@@ -102,90 +101,46 @@
             font-weight: 500;
         }
         
-        /* Section 3: The Essence */
-        #essence {
-            background-color: var(--color-accent);
+        /* Section 3 & 4 Common Styles */
+        .media-section {
+            max-width: 1000px;
         }
 
-        #essence .visual-placeholder {
+        .media-container, .image-container {
             width: 100%;
-            max-width: 400px;
-            height: 400px;
-            background-color: #ccc;
-            margin: 0 auto 40px auto;
-            border-radius: 5px;
+            margin: 40px auto;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
-        
-        #essence h2 {
+
+        .media-container video, .image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .media-section h2 {
             font-family: var(--font-serif);
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        #essence p {
+        .media-section p {
              max-width: 550px;
              margin: 0 auto;
         }
 
-        /* Section 4: The Ritual */
-        #ritual h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-        
-        .ritual-steps {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .ritual-step {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .ritual-step h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .ritual-step p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
         /* Section 5: The Promise */
-        #promise {
-            background-color: var(--color-accent);
-        }
-        
         #promise h2 {
             font-family: var(--font-serif);
-            font-size: 2.8rem;
-            letter-spacing: 2px;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
         }
-
-        #promise p {
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        .store-button {
-            display: inline-block;
-            padding: 12px 35px;
-            border: 1px solid var(--color-text);
-            color: var(--color-text);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .store-button:hover {
-            background-color: var(--color-text);
-            color: var(--color-background);
+        
+        #promise img {
+            max-height: 40px;
+            margin-top: 20px;
         }
 
         /* Footer */
@@ -200,13 +155,13 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition-delay: 0.2s;
         }
 
         section.visible > * {
             opacity: 1;
             transform: translateY(0);
         }
-
     </style>
 </head>
 <body>
@@ -214,9 +169,7 @@
     <main>
 
         <section id="hero">
-            <video class="video-background" autoplay loop muted playsinline src="">
-                </video>
-
+            <video class="video-background" autoplay loop muted playsinline src="section1.mp4"></video>
             <div class="hero-content">
                 <h1>하루의 시작,<br>가장 순수한 순간.</h1>
                 <p>the day:n powder wash</p>
@@ -225,38 +178,27 @@
 
         <section id="philosophy">
             <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-            <p><strong>attention international</strong>은<br>당신의 하루가 시작되는 그 찰나의 순간에 주목합니다.</p>
+            <p><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
         </section>
 
-        <section id="essence">
-            <div class="visual-placeholder"></div>
-
+        <section id="essence" class="media-section">
             <h2>본질에 집중하다.</h2>
-            <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다. 자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
-        </section>
-
-        <section id="ritual">
-            <h2>The Ritual</h2>
-            <div class="ritual-steps">
-                <div class="ritual-step">
-                    <h3>1. 덜어내고</h3>
-                    <p>손바닥 위, 하루를 여는 작은 언덕.</p>
-                </div>
-                <div class="ritual-step">
-                    <h3>2. 녹여내고</h3>
-                    <p>물과 만나 순수한 거품으로.</p>
-                </div>
-                <div class="ritual-step">
-                    <h3>3. 씻어내다</h3>
-                    <p>어제의 흔적과 오늘의 소음을.</p>
-                </div>
+            <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
+            <div class="image-container">
+                <img src="section3.jpg" alt="The Essence of the day:n">
             </div>
         </section>
 
+        <section id="origin" class="media-section">
+             <div class="media-container">
+                <video autoplay muted playsinline src="section4.mp4"></video>
+            </div>
+            <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+        </section>
+
         <section id="promise">
-            <h2>the day:n</h2>
-            <p>당신의 가장 빛나는 날은 오늘부터 시작됩니다.</p>
-            <a href="#" class="store-button">Brand Store</a>
+            <h2>당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.</h2>
+            <img src="Logo.png" alt="the day:n logo">
         </section>
         
     </main>
@@ -277,7 +219,7 @@
                     }
                 });
             }, {
-                threshold: 0.1 // 섹션이 10% 보일 때 애니메이션 시작
+                threshold: 0.1
             });
 
             sections.forEach(section => {
