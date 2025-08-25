@@ -13,6 +13,7 @@
             --font-sans: 'Noto Sans KR', sans-serif;
             --color-text: #333333;
             --color-background: #fdfdfc;
+            --color-accent: #f4f1ea; 
         }
 
         /* Basic Reset and Smooth Scrolling */
@@ -32,13 +33,13 @@
 
         /* Section Base Style */
         section {
-            padding: 120px 40px;
+            padding: 140px 40px;
             max-width: 800px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 80vh;
+            min-height: 70vh;
         }
 
         /* Section 1: The First Moment (Full Screen Hero) */
@@ -89,57 +90,102 @@
             letter-spacing: 1px;
         }
 
-        /* Section 2: The Philosophy */
+        /* Section 2: The Philosophy (수정됨) */
+        #philosophy {
+            background-color: var(--color-accent); /* 배경색 추가 */
+        }
+        
         #philosophy p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 10px auto;
+            font-size: 1.5rem; /* 글자 크기 증가 */
+            line-height: 2; /* 줄 간격 조정 */
+            max-width: 650px;
+            margin: 15px auto;
         }
 
         #philosophy strong {
-            font-family: var(--font-serif);
+            font-family: var(--font-serif); /* 세리프 폰트 적용 */
             font-weight: 500;
+            font-size: 1.8rem; /* 브랜드명 크기 강조 */
         }
         
-        /* Section 3 & 4 Common Styles */
+        /* Section 3 & 4 Styles */
         .media-section {
             max-width: 1000px;
         }
 
-        .media-container, .image-container {
+        /* Section 3: The Essence (수정됨) */
+        #essence h2, #origin h2 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem; /* 제목 크기 증가 */
+            margin-bottom: 25px;
+        }
+
+        #essence p, #origin p {
+             max-width: 600px;
+             margin: 0 auto;
+             font-size: 1.1rem;
+             line-height: 1.9;
+        }
+        
+        .image-container {
             width: 100%;
-            margin: 40px auto;
+            max-width: 650px; /* 사진 크기 축소 */
+            margin: 50px auto; /* 텍스트와 여백 확보 */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Section 4: The Origin (수정됨) */
+        .media-container {
+            width: 100%;
+            max-width: 800px; /* 영상 크기 조정 */
+            margin: 0 auto;
             position: relative;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
         }
-
-        .media-container video, .image-container img {
+        
+        .media-container video {
             width: 100%;
             display: block;
         }
-
-        .media-section h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        
+        .media-container .text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 80px 40px 40px;
+            box-sizing: border-box;
+            color: white;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 반투명 배경 추가 */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 텍스트 그림자 */
+        }
+        
+        #origin p {
+            max-width: none;
+            font-size: 1.2rem;
+            line-height: 1.9;
         }
 
-        .media-section p {
-             max-width: 550px;
-             margin: 0 auto;
-        }
-
-        /* Section 5: The Promise */
+        /* Section 5: The Promise (수정됨) */
         #promise h2 {
             font-family: var(--font-serif);
-            font-size: 2.5rem;
+            font-size: 2.8rem; /* 슬로건 크기 증가 */
+            line-height: 1.6;
             margin-bottom: 40px;
         }
         
         #promise img {
             max-height: 40px;
+            width: auto; /* 이미지 비율 유지 속성 추가 */
             margin-top: 20px;
         }
 
@@ -178,7 +224,7 @@
 
         <section id="philosophy">
             <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-            <p><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+            <p><br><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
         </section>
 
         <section id="essence" class="media-section">
@@ -192,8 +238,10 @@
         <section id="origin" class="media-section">
              <div class="media-container">
                 <video autoplay muted playsinline src="section4.mp4"></video>
+                <div class="text-overlay">
+                    <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+                </div>
             </div>
-            <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
         </section>
 
         <section id="promise">
@@ -211,7 +259,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('section');
-
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -221,7 +268,6 @@
             }, {
                 threshold: 0.1
             });
-
             sections.forEach(section => {
                 observer.observe(section);
             });
