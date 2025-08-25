@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>the day:n - The Ritual of Purity</title>
     <style>
-        /* Google Fonts Import */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Noto+Sans+KR:wght@300;400&display=swap');
+        /* Google Fonts Import: IBM Plex Sans KR 추가 */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap');
 
         :root {
             --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Noto Sans KR', sans-serif;
-            --color-text: #333333;
+            --font-sans: 'IBM Plex Sans KR', sans-serif; /* 기본 글꼴 변경 */
+            --color-text: #2c2c2c; /* 텍스트를 약간 더 진하게 */
             --color-background: #fdfdfc;
             --color-accent: #f4f1ea; 
         }
@@ -44,7 +44,7 @@
         }
 
         .content-wrapper {
-            max-width: 800px;
+            max-width: 1100px; /* 전체적인 콘텐츠 폭을 약간 넓힘 */
             width: 100%;
             z-index: 2;
         }
@@ -73,7 +73,7 @@
         #hero .content-wrapper { color: white; }
         #hero h1 {
             font-family: var(--font-serif);
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 500;
             line-height: 1.4;
             margin: 0;
@@ -87,34 +87,44 @@
         /* Section 2: Philosophy */
         #philosophy { background-color: var(--color-accent); }
         #philosophy p {
-            font-size: 1.5rem;
-            line-height: 2;
-            max-width: 650px;
+            font-size: 1.8rem; /* 데스크탑 글자 크기 증가 */
+            line-height: 2.2;
+            max-width: 750px;
             margin: 15px auto;
         }
         #philosophy strong {
             font-family: var(--font-serif);
             font-weight: 500;
-            font-size: 1.8rem;
+            font-size: 2.1rem;
         }
         
-        /* Section 3: Essence */
+        /* Section 3: Essence (구조 변경) */
         #essence { background-color: var(--color-background); }
-        #essence h2 {
+        .two-column-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            text-align: left;
+        }
+        .text-column {
+            flex: 1;
+            max-width: 400px;
+        }
+        .image-column {
+            flex: 1;
+        }
+        .text-column h2 {
             font-family: var(--font-serif);
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 25px;
         }
-        #essence p {
-             max-width: 600px;
-             margin: 0 auto;
+        .text-column p {
              font-size: 1.1rem;
              line-height: 1.9;
         }
         .image-container {
             width: 100%;
-            max-width: 600px;
-            margin: 50px auto;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
@@ -125,10 +135,11 @@
         }
 
         /* Section 4: Origin */
-        #origin .content-wrapper { color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
         #origin p {
-            font-size: 1.5rem;
-            line-height: 2;
+            font-size: 1.8rem; /* 데스크탑 글자 크기 증가 */
+            line-height: 2.2;
+            font-weight: 400; /* 약간 더 두껍게 */
         }
 
         /* Section 5: Promise */
@@ -149,7 +160,7 @@
         footer {
             padding: 50px 20px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #888;
             background-color: var(--color-background);
         }
@@ -165,7 +176,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         /* ======================================= */
         /* == RESPONSIVE DESIGN (MOBILE STYLES) == */
         /* ======================================= */
@@ -174,13 +185,20 @@
                 padding: 100px 25px;
                 min-height: 80vh;
             }
-
             #hero h1 { font-size: 2.8rem; }
-            #essence h2, #promise h2 { font-size: 2.2rem; }
-
             #hero p { font-size: 1rem; }
+
             #philosophy p { font-size: 1.2rem; line-height: 1.8; }
             #philosophy strong { font-size: 1.5rem; }
+
+            /* Section 3: 모바일에서는 세로로 쌓이도록 변경 */
+            .two-column-layout {
+                flex-direction: column;
+                text-align: center;
+            }
+            .text-column { margin-bottom: 40px; }
+            .text-column h2, #promise h2 { font-size: 2.2rem; }
+
             #origin p { font-size: 1.2rem; line-height: 1.8; }
         }
 
@@ -208,10 +226,16 @@
 
         <section id="essence" class="section">
             <div class="content-wrapper">
-                <h2>본질에 집중하다.</h2>
-                <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
-                <div class="image-container">
-                    <img src="section3.jpg" alt="The Essence of the day:n">
+                <div class="two-column-layout">
+                    <div class="text-column">
+                        <h2>본질에 집중하다.</h2>
+                        <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
+                    </div>
+                    <div class="image-column">
+                        <div class="image-container">
+                            <img src="section3.jpg" alt="The Essence of the day:n">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -220,7 +244,7 @@
             <video id="originVideo" class="video-background" muted playsinline src="section4.mp4"></video>
             <div class="overlay"></div>
             <div class="content-wrapper">
-                <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+                <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
             </div>
         </section>
 
@@ -245,25 +269,17 @@
 
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    // 섹션이 화면에 나타나면 'visible' 클래스 추가 (애니메이션 시작)
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-
-                        // 만약 나타난 섹션이 'origin' 섹션이라면, 비디오 재생
-                        if (entry.target.id === 'origin') {
-                            // promise.catch()를 사용하여 사용자가 상호작용하기 전에 발생하는 오류를 조용히 처리합니다.
+                        if (entry.target.id === 'origin' && originVideo.paused) {
                             originVideo.play().catch(error => {
-                                console.log("Video autoplay was prevented:", error);
+                                console.log("Video autoplay prevented by browser.");
                             });
                         }
-                    } 
-                    // (선택사항) 섹션이 화면에서 사라질 때 애니메이션을 다시 숨기고 싶다면 아래 코드 활성화
-                    // else {
-                    //     entry.target.classList.remove('visible');
-                    // }
+                    }
                 });
             }, {
-                threshold: 0.2 // 섹션이 20% 보일 때 동작
+                threshold: 0.2
             });
 
             sections.forEach(section => {
