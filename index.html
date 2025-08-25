@@ -29,23 +29,23 @@
             font-weight: 300;
         }
 
-        /* NEW: Full Bleed Section Structure */
+        /* Full Bleed Section Structure */
         .section {
             width: 100%;
-            min-height: 100vh; /* 모든 섹션의 최소 높이를 화면 전체로 설정 */
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             box-sizing: border-box;
-            padding: 80px 40px;
+            padding: 140px 40px;
         }
 
         .content-wrapper {
             max-width: 800px;
             width: 100%;
-            z-index: 2; /* 콘텐츠가 배경 위에 오도록 설정 */
+            z-index: 2;
         }
         
         .video-background {
@@ -112,7 +112,7 @@
         }
         .image-container {
             width: 100%;
-            max-width: 600px; /* 이미지 크기 조정 */
+            max-width: 600px;
             margin: 50px auto;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-radius: 8px;
@@ -139,8 +139,8 @@
             margin-bottom: 40px;
         }
         #promise img {
-            max-width: 180px; /* 로고 크기를 너비 기준으로 제어 */
-            height: auto;     /* 높이는 자동으로 비율에 맞춤 */
+            max-width: 180px;
+            height: auto;
             margin-top: 20px;
         }
 
@@ -160,11 +160,31 @@
             transition: opacity 1s ease-out, transform 1s ease-out;
             transition-delay: 0.2s;
         }
-
         .section.visible .content-wrapper > * {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ======================================= */
+        /* == RESPONSIVE DESIGN (MOBILE STYLES) == */
+        /* ======================================= */
+        @media (max-width: 768px) {
+            .section {
+                padding: 100px 25px; /* 모바일에서 상하좌우 여백 줄임 */
+                min-height: 80vh; /* 모바일에서는 화면 높이를 꽉 채우지 않아도 되도록 조정 */
+            }
+
+            /* 모바일 제목 크기 조정 */
+            #hero h1 { font-size: 2.8rem; }
+            #essence h2, #promise h2 { font-size: 2.2rem; }
+
+            /* 모바일 본문 크기 조정 */
+            #hero p { font-size: 1rem; }
+            #philosophy p { font-size: 1.2rem; line-height: 1.8; }
+            #philosophy strong { font-size: 1.5rem; }
+            #origin p { font-size: 1.2rem; line-height: 1.8; }
+        }
+
     </style>
 </head>
 <body>
@@ -222,7 +242,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section');
-
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -232,7 +251,6 @@
             }, {
                 threshold: 0.2
             });
-
             sections.forEach(section => {
                 observer.observe(section);
             });
