@@ -39,7 +39,7 @@
             text-align: center;
             position: relative;
             box-sizing: border-box;
-            padding: 140px 0; /* 좌우 패딩 제거 */
+            padding: 140px 40px;
             overflow: hidden;
         }
 
@@ -47,8 +47,6 @@
             max-width: 1100px;
             width: 100%;
             z-index: 2;
-            padding: 0 40px; /* 콘텐츠 영역에만 좌우 패딩 적용 */
-            box-sizing: border-box;
         }
         
         .video-background, .image-background {
@@ -100,38 +98,29 @@
             font-size: 2.1rem;
         }
         
-        /* Section 4 (이제 이미지): Essence - 수정됨 */
-        #essence { 
-            background-color: var(--color-background);
-            display: block; /* flex 대신 block으로 변경하여 꽉 채우기 */
-            padding: 0; /* 섹션 자체 패딩 제거 */
+        /* Section 3 (이제 영상): Origin */
+        #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        #origin p {
+            font-size: 1.8rem;
+            line-height: 2.2;
+            font-weight: 400;
         }
+
+        /* Section 4 (이제 이미지): Essence */
+        #essence { background-color: var(--color-background); }
         .two-column-layout {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 60px;
             text-align: left;
         }
         .text-column {
             flex: 1;
-            padding: 100px 5%; /* 텍스트 영역 패딩 */
-            box-sizing: border-box;
-            max-width: 50%;
+            max-width: 400px;
         }
         .image-column {
             flex: 1;
-            max-width: 50%;
-            height: 100vh; /* 이미지 영역이 화면 높이를 꽉 채우도록 */
-            overflow: hidden;
-        }
-        .image-container {
-            width: 100%;
-            height: 100%;
-        }
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 이미지가 영역을 꽉 채우되 비율 유지하며 잘림 */
-            display: block;
         }
         .text-column h2 {
             font-family: var(--font-serif);
@@ -142,13 +131,15 @@
              font-size: 1.1rem;
              line-height: 1.9;
         }
-
-        /* Section 3 (이제 영상): Origin */
-        #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-        #origin p {
-            font-size: 1.8rem;
-            line-height: 2.2;
-            font-weight: 400;
+        .image-container {
+            width: 100%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            display: block;
         }
 
         /* Section 5: Promise */
@@ -165,13 +156,18 @@
             margin-top: 20px;
         }
 
-        /* Footer */
+        /* Footer (수정됨) */
         footer {
-            padding: 50px 20px;
+            display: block;
+            clear: both;
+            position: relative;
+            z-index: 10;
+            padding: 50px 40px;
             text-align: center;
             font-size: 0.9rem;
             color: #888;
             background-color: var(--color-background);
+            box-sizing: border-box;
         }
 
         /* Fade-in Animation on Scroll */
@@ -191,10 +187,8 @@
         /* ======================================= */
         @media (max-width: 768px) {
             .section {
-                padding: 100px 0;
-            }
-            .content-wrapper {
-                padding: 0 25px;
+                padding: 100px 25px;
+                min-height: 80vh;
             }
             #hero h1 { font-size: 2.6rem; }
             #hero p { font-size: 1rem; }
@@ -202,25 +196,23 @@
             #philosophy p { font-size: 1.2rem; line-height: 1.8; }
             #philosophy strong { font-size: 1.5rem; }
 
-            /* 모바일에서 섹션 4는 세로로 쌓임 */
             .two-column-layout {
                 flex-direction: column;
+                text-align: center;
             }
-            .text-column, .image-column {
-                max-width: 100%;
-                height: auto; /* 높이 자동 조정 */
-            }
-            .text-column {
-                padding: 100px 25px;
-            }
-            .image-column {
-                padding: 0;
-                min-height: 60vh; /* 이미지 최소 높이 확보 */
-            }
+            .text-column { margin-bottom: 40px; }
             .text-column h2 { font-size: 2.2rem; }
-            #promise h2 { font-size: 2.0rem; }
 
             #origin p { font-size: 1.2rem; line-height: 1.8; }
+            
+            #promise h2 { 
+                font-size: 2.0rem;
+            }
+
+            footer {
+                padding: 40px 20px;
+                font-size: 0.8rem;
+            }
         }
 
     </style>
@@ -246,7 +238,7 @@
         </section>
         
         <section id="origin" class="section">
-            <video id="originVideo" class="video-background" autoplay loop muted playsinline src="section3.mp4"></video>
+            <video class="video-background" autoplay loop muted playsinline src="section3.mp4"></video>
             <div class="overlay"></div>
             <div class="content-wrapper">
                 <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
@@ -254,16 +246,16 @@
         </section>
         
         <section id="essence" class="section">
-            <div class="two-column-layout">
-                <div class="text-column">
-                    <div class="content-wrapper">
+            <div class="content-wrapper">
+                <div class="two-column-layout">
+                    <div class="text-column">
                         <h2>본질에 집중하다.</h2>
                         <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
                     </div>
-                </div>
-                <div class="image-column">
-                    <div class="image-container">
-                        <img src="section4.jpg" alt="The Essence of the day:n">
+                    <div class="image-column">
+                        <div class="image-container">
+                            <img src="section4.jpg" alt="The Essence of the day:n">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -279,15 +271,14 @@
     </main>
 
     <footer>
-        <div class="content-wrapper">
-            <p>&copy; 2025 attention international. All Rights Reserved.</p>
-            <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
-        </div>
+        <p>&copy; 2025 attention international. All Rights Reserved.</p>
+        <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
     </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section');
+
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -297,6 +288,7 @@
             }, {
                 threshold: 0.2
             });
+
             sections.forEach(section => {
                 observer.observe(section);
             });
