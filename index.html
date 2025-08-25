@@ -27,17 +27,13 @@
             color: var(--color-text);
             font-family: var(--font-sans);
             font-weight: 300;
-            /* Footer 문제를 해결하기 위한 구조 개선 */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
         
         main {
-            flex-grow: 1; /* main 영역이 가능한 모든 공간을 차지하도록 설정 */
+            display: block; /* main을 블록 요소로 명확히 함 */
         }
 
-        /* Full Bleed Section Structure */
+        /* Default Section Structure */
         .section {
             width: 100%;
             min-height: 100vh;
@@ -106,7 +102,7 @@
             font-size: 2.1rem;
         }
         
-        /* Section 3 (이제 영상): Origin */
+        /* Section 3 (영상): Origin */
         #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
         #origin p {
             font-size: 1.8rem;
@@ -114,21 +110,33 @@
             font-weight: 400;
         }
 
-        /* Section 4 (이제 이미지): Essence */
-        #essence { background-color: var(--color-background); }
+        /* Section 4 (이미지): Essence - Full Bleed 구조로 수정 */
+        #essence { 
+            padding: 0; /* 섹션 자체의 패딩을 제거하여 전체 화면 사용 */
+            min-height: 100vh;
+            display: flex;
+        }
         .two-column-layout {
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        }
+        .text-column {
+            flex-basis: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 60px;
             text-align: left;
-        }
-        .text-column {
-            flex: 1;
-            max-width: 400px;
+            box-sizing: border-box;
+            padding: 5%;
         }
         .image-column {
-            flex: 1;
+            flex-basis: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+        .text-column-content {
+            max-width: 450px;
         }
         .text-column h2 {
             font-family: var(--font-serif);
@@ -138,19 +146,9 @@
         .text-column p {
              font-size: 1.1rem;
              line-height: 1.9;
-             margin: 1em 0; /* 단락 간의 여백을 위해 추가 */
+             margin-bottom: 1.2em;
         }
-        .image-container {
-            width: 100%;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .image-container img {
-            width: 100%;
-            display: block;
-        }
-
+        
         /* Section 5: Promise */
         #promise { background-color: var(--color-accent); }
         #promise h2 {
@@ -172,17 +170,17 @@
             font-size: 0.9rem;
             color: #888;
             background-color: var(--color-background);
-            box-sizing: border-box;
         }
 
         /* Fade-in Animation on Scroll */
-        .content-wrapper > * {
+        .content-wrapper > *, .text-column-content {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1s ease-out, transform 1s ease-out;
             transition-delay: 0.2s;
         }
-        .section.visible .content-wrapper > * {
+        .section.visible .content-wrapper > *,
+        .section.visible .text-column-content {
             opacity: 1;
             transform: translateY(0);
         }
@@ -201,11 +199,20 @@
             #philosophy p { font-size: 1.2rem; line-height: 1.8; }
             #philosophy strong { font-size: 1.5rem; }
 
+            #essence {
+                min-height: auto;
+            }
             .two-column-layout {
                 flex-direction: column;
-                text-align: center;
             }
-            .text-column { margin-bottom: 40px; }
+            .text-column {
+                text-align: center;
+                padding: 100px 25px;
+                flex-basis: auto;
+            }
+            .image-column {
+                flex-basis: 60vh; /* 모바일에서 이미지 영역 높이 지정 */
+            }
             .text-column h2 { font-size: 2.2rem; }
 
             #origin p { font-size: 1.2rem; line-height: 1.8; }
@@ -213,7 +220,6 @@
             #promise h2 { 
                 font-size: 2.0rem;
             }
-
             footer {
                 font-size: 0.8rem;
             }
@@ -250,19 +256,16 @@
         </section>
         
         <section id="essence" class="section">
-            <div class="content-wrapper">
-                <div class="two-column-layout">
-                    <div class="text-column">
+             <div class="two-column-layout">
+                <div class="text-column">
+                    <div class="text-column-content">
                         <h2>본질에 집중하다.</h2>
                         <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.</p>
                         <p>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
                     </div>
-                    <div class="image-column">
-                        <div class="image-container">
-                            <img src="section4.jpg" alt="The Essence of the day:n">
-                        </div>
-                    </div>
                 </div>
+                <div class="image-column" style="background-image: url('section4.jpg');">
+                    </div>
             </div>
         </section>
 
