@@ -27,55 +27,49 @@
             color: var(--color-text);
             font-family: var(--font-sans);
             font-weight: 300;
-            line-height: 1.8;
-            text-align: center;
         }
 
-        /* Section Base Style */
-        section {
-            padding: 140px 40px;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 70vh;
-        }
-
-        /* Section 1: The First Moment (Full Screen Hero) */
-        #hero {
-            height: 100vh;
-            padding: 0;
-            max-width: none;
-            position: relative;
-            color: white;
+        /* NEW: Full Bleed Section Structure */
+        .section {
+            width: 100%;
+            min-height: 100vh; /* 모든 섹션의 최소 높이를 화면 전체로 설정 */
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+            padding: 80px 40px;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            width: 100%;
+            z-index: 2; /* 콘텐츠가 배경 위에 오도록 설정 */
         }
         
-        #hero .video-background {
+        .video-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2;
-            background-color: #555;
+            z-index: 0;
         }
-
-        #hero::after {
-            content: '';
+        
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.25);
-            z-index: -1;
+            z-index: 1;
         }
 
+        /* Section 1: Hero */
+        #hero .content-wrapper { color: white; }
         #hero h1 {
             font-family: var(--font-serif);
             font-size: 3.5rem;
@@ -83,128 +77,91 @@
             line-height: 1.4;
             margin: 0;
         }
-
         #hero p {
             font-size: 1.2rem;
             margin-top: 10px;
             letter-spacing: 1px;
         }
 
-        /* Section 2: The Philosophy (수정됨) */
-        #philosophy {
-            background-color: var(--color-accent); /* 배경색 추가 */
-        }
-        
+        /* Section 2: Philosophy */
+        #philosophy { background-color: var(--color-accent); }
         #philosophy p {
-            font-size: 1.5rem; /* 글자 크기 증가 */
-            line-height: 2; /* 줄 간격 조정 */
+            font-size: 1.5rem;
+            line-height: 2;
             max-width: 650px;
             margin: 15px auto;
         }
-
         #philosophy strong {
-            font-family: var(--font-serif); /* 세리프 폰트 적용 */
+            font-family: var(--font-serif);
             font-weight: 500;
-            font-size: 1.8rem; /* 브랜드명 크기 강조 */
+            font-size: 1.8rem;
         }
         
-        /* Section 3 & 4 Styles */
-        .media-section {
-            max-width: 1000px;
-        }
-
-        /* Section 3: The Essence (수정됨) */
-        #essence h2, #origin h2 {
+        /* Section 3: Essence */
+        #essence { background-color: var(--color-background); }
+        #essence h2 {
             font-family: var(--font-serif);
-            font-size: 2.8rem; /* 제목 크기 증가 */
+            font-size: 2.8rem;
             margin-bottom: 25px;
         }
-
-        #essence p, #origin p {
+        #essence p {
              max-width: 600px;
              margin: 0 auto;
              font-size: 1.1rem;
              line-height: 1.9;
         }
-        
         .image-container {
             width: 100%;
-            max-width: 650px; /* 사진 크기 축소 */
-            margin: 50px auto; /* 텍스트와 여백 확보 */
+            max-width: 600px; /* 이미지 크기 조정 */
+            margin: 50px auto;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
         }
-        
         .image-container img {
             width: 100%;
             display: block;
         }
 
-        /* Section 4: The Origin (수정됨) */
-        .media-container {
-            width: 100%;
-            max-width: 800px; /* 영상 크기 조정 */
-            margin: 0 auto;
-            position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .media-container video {
-            width: 100%;
-            display: block;
-        }
-        
-        .media-container .text-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 80px 40px 40px;
-            box-sizing: border-box;
-            color: white;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 반투명 배경 추가 */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 텍스트 그림자 */
-        }
-        
+        /* Section 4: Origin */
+        #origin .content-wrapper { color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         #origin p {
-            max-width: none;
-            font-size: 1.2rem;
-            line-height: 1.9;
+            font-size: 1.5rem;
+            line-height: 2;
         }
 
-        /* Section 5: The Promise (수정됨) */
+        /* Section 5: Promise */
+        #promise { background-color: var(--color-accent); }
         #promise h2 {
             font-family: var(--font-serif);
-            font-size: 2.8rem; /* 슬로건 크기 증가 */
+            font-size: 2.8rem;
             line-height: 1.6;
             margin-bottom: 40px;
         }
-        
         #promise img {
-            max-height: 40px;
-            width: auto; /* 이미지 비율 유지 속성 추가 */
+            max-width: 180px; /* 로고 크기를 너비 기준으로 제어 */
+            height: auto;     /* 높이는 자동으로 비율에 맞춤 */
             margin-top: 20px;
         }
 
         /* Footer */
         footer {
             padding: 50px 20px;
+            text-align: center;
             font-size: 0.8rem;
             color: #888;
+            background-color: var(--color-background);
         }
 
         /* Fade-in Animation on Scroll */
-        section > * {
+        .content-wrapper > * {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
             transition-delay: 0.2s;
         }
 
-        section.visible > * {
+        .section.visible .content-wrapper > * {
             opacity: 1;
             transform: translateY(0);
         }
@@ -214,39 +171,45 @@
 
     <main>
 
-        <section id="hero">
+        <section id="hero" class="section">
             <video class="video-background" autoplay loop muted playsinline src="section1.mp4"></video>
-            <div class="hero-content">
+            <div class="overlay"></div>
+            <div class="content-wrapper">
                 <h1>하루의 시작,<br>가장 순수한 순간.</h1>
                 <p>the day:n powder wash</p>
             </div>
         </section>
 
-        <section id="philosophy">
-            <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-            <p><br><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
-        </section>
-
-        <section id="essence" class="media-section">
-            <h2>본질에 집중하다.</h2>
-            <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
-            <div class="image-container">
-                <img src="section3.jpg" alt="The Essence of the day:n">
+        <section id="philosophy" class="section">
+            <div class="content-wrapper">
+                <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
+                <p><br><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
             </div>
         </section>
 
-        <section id="origin" class="media-section">
-             <div class="media-container">
-                <video autoplay muted playsinline src="section4.mp4"></video>
-                <div class="text-overlay">
-                    <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+        <section id="essence" class="section">
+            <div class="content-wrapper">
+                <h2>본질에 집중하다.</h2>
+                <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.<br>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
+                <div class="image-container">
+                    <img src="section3.jpg" alt="The Essence of the day:n">
                 </div>
             </div>
         </section>
 
-        <section id="promise">
-            <h2>당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.</h2>
-            <img src="Logo.png" alt="the day:n logo">
+        <section id="origin" class="section">
+            <video class="video-background" autoplay muted playsinline src="section4.mp4"></video>
+            <div class="overlay"></div>
+            <div class="content-wrapper">
+                <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
+            </div>
+        </section>
+
+        <section id="promise" class="section">
+            <div class="content-wrapper">
+                <h2>당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.</h2>
+                <img src="Logo.png" alt="the day:n logo">
+            </div>
         </section>
         
     </main>
@@ -258,7 +221,8 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
+            const sections = document.querySelectorAll('.section');
+
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -266,8 +230,9 @@
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.2
             });
+
             sections.forEach(section => {
                 observer.observe(section);
             });
