@@ -98,7 +98,15 @@
             font-size: 2.1rem;
         }
         
-        /* Section 3: Essence (좌우 분할 레이아웃) */
+        /* Section 3 (이제 영상): Origin */
+        #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        #origin p {
+            font-size: 1.8rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        /* Section 4 (이제 이미지): Essence */
         #essence { background-color: var(--color-background); }
         .two-column-layout {
             display: flex;
@@ -132,14 +140,6 @@
         .image-container img {
             width: 100%;
             display: block;
-        }
-
-        /* Section 4: Origin (전체 화면 영상 배경) */
-        #origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-        #origin p {
-            font-size: 1.8rem;
-            line-height: 2.2;
-            font-weight: 400;
         }
 
         /* Section 5: Promise */
@@ -196,10 +196,13 @@
                 text-align: center;
             }
             .text-column { margin-bottom: 40px; }
-            .text-column h2, #promise h2 { font-size: 2.2rem; }
-            #promise h2 { font-size: 2.1rem; }
+            .text-column h2 { font-size: 2.2rem; }
 
             #origin p { font-size: 1.2rem; line-height: 1.8; }
+            
+            #promise h2 { 
+                font-size: 2.0rem; /* 요청하신 대로 1포인트 더 줄임 */
+            }
         }
 
     </style>
