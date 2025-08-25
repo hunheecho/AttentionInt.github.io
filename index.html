@@ -40,6 +40,7 @@
             position: relative;
             box-sizing: border-box;
             padding: 140px 40px;
+            overflow: hidden;
         }
 
         .content-wrapper {
@@ -170,15 +171,13 @@
         /* ======================================= */
         @media (max-width: 768px) {
             .section {
-                padding: 100px 25px; /* 모바일에서 상하좌우 여백 줄임 */
-                min-height: 80vh; /* 모바일에서는 화면 높이를 꽉 채우지 않아도 되도록 조정 */
+                padding: 100px 25px;
+                min-height: 80vh;
             }
 
-            /* 모바일 제목 크기 조정 */
             #hero h1 { font-size: 2.8rem; }
             #essence h2, #promise h2 { font-size: 2.2rem; }
 
-            /* 모바일 본문 크기 조정 */
             #hero p { font-size: 1rem; }
             #philosophy p { font-size: 1.2rem; line-height: 1.8; }
             #philosophy strong { font-size: 1.5rem; }
@@ -218,7 +217,7 @@
         </section>
 
         <section id="origin" class="section">
-            <video class="video-background" autoplay muted playsinline src="section4.mp4"></video>
+            <video id="originVideo" class="video-background" muted playsinline src="section4.mp4"></video>
             <div class="overlay"></div>
             <div class="content-wrapper">
                 <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
@@ -242,15 +241,31 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section');
+            const originVideo = document.getElementById('originVideo');
+
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
+                    // 섹션이 화면에 나타나면 'visible' 클래스 추가 (애니메이션 시작)
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                    }
+
+                        // 만약 나타난 섹션이 'origin' 섹션이라면, 비디오 재생
+                        if (entry.target.id === 'origin') {
+                            // promise.catch()를 사용하여 사용자가 상호작용하기 전에 발생하는 오류를 조용히 처리합니다.
+                            originVideo.play().catch(error => {
+                                console.log("Video autoplay was prevented:", error);
+                            });
+                        }
+                    } 
+                    // (선택사항) 섹션이 화면에서 사라질 때 애니메이션을 다시 숨기고 싶다면 아래 코드 활성화
+                    // else {
+                    //     entry.target.classList.remove('visible');
+                    // }
                 });
             }, {
-                threshold: 0.2
+                threshold: 0.2 // 섹션이 20% 보일 때 동작
             });
+
             sections.forEach(section => {
                 observer.observe(section);
             });
